@@ -31,8 +31,7 @@ class ListDataItem extends StatelessWidget {
     await _bloc.addToCart(fido);
     print(await _bloc.convertData());
 
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => MyCartPage())); //
+    //
   }
 
   Widget addToCart(context, objdetail) => GestureDetector(

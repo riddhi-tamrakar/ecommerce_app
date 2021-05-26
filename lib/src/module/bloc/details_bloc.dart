@@ -19,7 +19,6 @@ class Details extends Bloc<DetailsEvent, DetailsState> {
     DetailsEvent event,
   ) async* {
     if (event is GetData) {
-      print("hello");
       try {
         // yield Loading();
         List<GetDetails> _data = await getData(event.page, event.perpage);
@@ -132,15 +131,15 @@ class Details extends Bloc<DetailsEvent, DetailsState> {
     });
   }
 
-  Future<void> updateData(CartData dog) async {
+  Future<void> updateData(CartData data) async {
     // Get a reference to the database.
     final db = await database;
 
     await db.update(
       'cartData',
-      dog.toMap(),
+      data.toMap(),
       where: 'id = ?',
-      whereArgs: [dog.id],
+      whereArgs: [data.id],
     );
   }
 

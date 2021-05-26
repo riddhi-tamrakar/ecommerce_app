@@ -2,6 +2,7 @@ import 'package:ecommerce_app/src/module/bloc/details_bloc.dart';
 import 'package:ecommerce_app/src/module/bloc/details_event.dart';
 import 'package:ecommerce_app/src/module/bloc/details_state.dart';
 import 'package:ecommerce_app/src/module/model/get_data.dart';
+import 'package:ecommerce_app/src/module/ui/mycart.dart';
 import 'package:ecommerce_app/src/services/utility.dart';
 import 'package:ecommerce_app/src/styles/theme.dart';
 import 'package:ecommerce_app/src/widgets/details_card.dart';
@@ -90,35 +91,34 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: AppTheme.kPrimaryColor,
+          title: Text(
+            "Products",
+            style: Theme.of(context).textTheme.headline6.copyWith(
+                  color: AppTheme.kOnPrimaryColor,
+                ),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => MyCartPage()));
+              },
+              icon: Icon(
+                Icons.shopping_cart,
+                size: Utility.displayHeight(context) * 0.023,
+                color: AppTheme.kOnPrimaryColor,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            )
+          ],
         ),
         body: Container(
           child: Padding(
             padding: EdgeInsets.all(Utility.displayHeight(context) * 0.02),
             child: Column(
               children: [
-                SizedBox(
-                  height: Utility.displayHeight(context) * 0.02,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 8.0),
-                  child: Container(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Product",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6
-                          .copyWith(color: AppTheme.kPrimaryColor),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: new Divider(
-                    height: 15.0,
-                    color: Colors.black26,
-                  ),
-                ),
                 BlocBuilder(
                     bloc: _bloc,
                     builder: (BuildContext context, DetailsState state) {

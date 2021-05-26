@@ -45,7 +45,7 @@ class AppTheme {
       foregroundColor: kOnPrimaryColor,
       backgroundColor: kPrimaryColor,
       iconTheme: IconThemeData(
-        color: kPrimaryColor,
+        color: kOnPrimaryColor,
       ),
     ),
     colorScheme: ColorScheme.light(
